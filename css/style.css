@@ -1,0 +1,266 @@
+/* =========================
+   LOGIN / INDEX
+========================= */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #2F6690;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+
+    animation: aparecer 1s ease-out, flotar 3s ease-in-out infinite;
+}
+
+/* Animación de entrada */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Animación flotante */
+@keyframes flotar {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+.container:hover {
+    transform: scale(1.03);
+    transition: 0.3s;
+}
+
+h1 {
+    font-size: 36px;
+    color: #16425B;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 20px;
+    color: #2F6690;
+    margin-bottom: 30px;
+}
+
+label {
+    display: block;
+    font-size: 20px;
+    margin-top: 15px;
+    text-align: left;
+    color: #16425B;
+}
+
+input {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 2px solid #D9DCD6;
+    margin-top: 5px;
+}
+
+input:focus {
+    border-color: #81C3D7;
+    outline: none;
+}
+
+button {
+    margin-top: 30px;
+    width: 100%;
+    padding: 18px;
+    font-size: 22px;
+    background-color: #3A7CA5;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #16425B;
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 28px; }
+    button { font-size: 20px; }
+}
+
+
+/* MODULO 1 */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #D9DCD6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: white;
+    padding: 40px;
+    border-radius: 30px;
+    width: 95%;
+    max-width: 650px;
+    text-align: center;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+h2 {
+    font-size: 28px;
+    color: #16425B;
+}
+
+.btn-grande {
+    padding: 20px;
+    font-size: 24px;
+    border-radius: 20px;
+    border: none;
+    background-color: #2F6690;
+    color: white;
+    cursor: pointer;
+}
+
+.imagen-area img {
+    width: 250px;
+    margin: 20px 0;
+}
+
+.audio-btn {
+    padding: 15px;
+    font-size: 20px;
+    border-radius: 15px;
+    border: none;
+    background-color: #81C3D7;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.opciones button {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    margin: 15px 0;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 20px;
+    border: none;
+    background-color: #3A7CA5;
+    color: white;
+    cursor: pointer;
+}
+
+#mensaje {
+    font-size: 28px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+
+/*casa*/
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #F6F5F2;
+}
+
+/* PERFIL */
+.perfil {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 20px;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+}
+
+.perfil img {
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+}
+
+.info h3 {
+    margin: 0;
+}
+
+.info p {
+    margin: 5px 0 0 0;
+    font-weight: bold;
+    color: #2E7D32;
+}
+
+/* TITULO */
+.titulo {
+    text-align: center;
+    margin-top: 120px;
+    font-size: 40px;
+    color: #333;
+}
+
+/* CONTENEDOR MODULOS */
+.modulos-container {
+    width: 80%;
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+/* BOTONES MODULOS */
+.modulo {
+    text-decoration: none;
+    padding: 50px 20px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 25px;
+    color: white;
+    transition: 0.3s;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
+}
+
+.m1 { background: #0D47A1; }  /* Azul muy oscuro */
+.m2 { background: #1565C0; }  /* Azul fuerte */
+.m3 { background: #1976D2; }  /* Azul principal */
+.m4 { background: #1E88E5; }  /* Azul medio */
+.m5 { background: #42A5F5; }  /* Azul claro */
+/* EFECTO HOVER */
+.modulo:hover {
+    transform: scale(1.08);
+    box-shadow: 0px 12px 25px rgba(0,0,0,0.2);
+}
+
+/* DISTRIBUCION ESPECIAL */
+.m4 {
+    grid-column: 1 / 2;
+}
+
+.m5 {
+    grid-column: 3 / 4;
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego Inclusivo</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container" role="main">
+    <h1>Aprendo Dinero</h1>
+    <p>¡Bienvenido! Ingresa tus datos para comenzar</p>
+<form>
+    <label for="nombre">Nombre del alumno:</label>
+    <input type="text" id="nombre" name="nombre" required>
+
+    <label for="edad">Edad:</label>
+    <input type="number" id="edad" name="edad" min="3" max="50" required>
+
+ <button type="button" onclick="guardarNombre()">Empezar</button>
+</form>
+</div>
+<script src="js/casa.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 1</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Nivel 1</h1>
+    <h2>Observa bien la imagen ¿Cuánto vale este billete?</h2>
+
+    <div class="imagen-area">
+        <img src="/img/20pesos.png"
+             alt="Billete de 20 pesos">
+    </div>
+
+    <button class="audio-btn" onclick="leerTexto()">🔊 Escuchar</button>
+
+    <div class="opciones">
+        <button onclick="verificar(20)">20 PESOS</button>
+        <button onclick="verificar(50)">50 PESOS</button>
+        <button onclick="verificar(100)">100 PESOS</button>
+    </div>
+
+    <div id="mensaje"></div>
+
+</div>
+
+<script src="../js/modulo1.js"></script>
+</body>
+</html>
