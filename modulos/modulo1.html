@@ -1,35 +1,118 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Módulo 1</title>
-<link rel="stylesheet" href="../css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reconocimiento de Billetes y Monedas</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap"
+    rel="stylesheet"
+  >
+
 </head>
 <body>
 
-<div class="container">
+  <!-- ===== NUBES ===== -->
+  <div class="cloud cloud-1"></div>
+  <div class="cloud cloud-2"></div>
+  <div class="cloud cloud-3"></div>
 
-    <h1>Nivel 1</h1>
-    <h2>Observa bien la imagen ¿Cuánto vale este billete?</h2>
+  <!-- ===== COLINAS ===== -->
+  <div class="hills">
+    <div class="hill hill-1"></div>
+    <div class="hill hill-2"></div>
+  </div>
 
-    <div class="imagen-area">
-        <img src="/img/20pesos.png"
-             alt="Billete de 20 pesos">
+  <!-- ===== ÁRBOLES ===== -->
+  <div class="tree tree-left">
+    <div class="tree-top-2"></div>
+    <div class="tree-top"></div>
+    <div class="tree-trunk"></div>
+  </div>
+
+  <div class="tree tree-right">
+    <div class="tree-top-2"></div>
+    <div class="tree-top"></div>
+    <div class="tree-trunk"></div>
+  </div>
+
+  <div class="tree tree-far-right">
+    <div class="tree-top-2"></div>
+    <div class="tree-top"></div>
+    <div class="tree-trunk"></div>
+  </div>
+
+  <!-- ===== BARRA SUPERIOR ===== -->
+<div class="top-bar">
+  <span class="title-label">Reconocimiento de billetes</span>
+
+  <div class="progress-bar-wrap">
+    <div class="progress-bar-fill" id="progressFill"></div>
+  </div>
+
+<div id="header-icons">
+      
+      <button class="icon-btn" id="mute-btn" onclick="toggleMute()"><i class="fa-solid fa-volume-xmark" style="color: rgb(255, 255, 255);"></i></button>
+      <button class="icon-btn" onclick="openModal('settings-modal')">
+  <i class="fa-solid fa-gear"></i>
+</button>
+</button>
+  </div>
+  </div>
+</div>
+<div class="modal-overlay" id="settings-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('settings-modal')">✕</button>
+    <h2>Ajustes</h2>
+    <div class="setting-row">
+      <span><i class="fa-solid fa-volume-high"></i> Sonido</span>
+      <div class="toggle on" id="toggle-sound" onclick="toggleSetting('toggle-sound')"></div>
+    </div>
+    <div class="setting-row">
+      <span><i class="fa-solid fa-music"></i> Música</span>
+      <div class="toggle on" id="toggle-music" onclick="toggleSetting('toggle-music')"></div>
     </div>
 
-    <button class="audio-btn" onclick="leerTexto()">🔊 Escuchar</button>
-
-    <div class="opciones">
-        <button onclick="verificar(20)">20 PESOS</button>
-        <button onclick="verificar(50)">50 PESOS</button>
-        <button onclick="verificar(100)">100 PESOS</button>
-    </div>
-
-    <div id="mensaje"></div>
-
+    <br>
+    <button class="btn-primary" onclick="closeModal('settings-modal')">Listo</button>
+  </div>
 </div>
 
-<script src="../js/modulo1.js"></script>
+  <!-- ===== MARCADOR ===== -->
+  <div class="score-badge"><i class="fa-solid fa-star" style="color: rgb(255, 212, 59);"></i> <span id="scoreDisplay">0</span></div>
+
+  <!-- ===== TARJETA PRINCIPAL ===== -->
+  <div class="card" id="mainCard">
+    <div class="q-counter" id="qCounter">Pregunta 1 de 10</div>
+
+    <div class="money-img-wrap" id="moneyImgWrap">
+      <!-- SVG inyectado por JS -->
+    </div>
+
+    <div class="question-text" id="questionText">¿Cuánto vale este billete?</div>
+
+    <div class="options" id="optionsContainer">
+      <!-- Botones generados por JS -->
+    </div>
+  </div>
+
+  <!-- ===== BOTÓN ESCUCHAR ===== -->
+  <button class="listen-btn" onclick="escucharPregunta()">
+  <i class="fa-solid fa-ear-listen"></i> Escuchar pregunta
+</button>
+  <!-- ===== FEEDBACK OVERLAY ===== -->
+  <div class="feedback-overlay" id="feedbackOverlay">
+    <div class="feedback-emoji" id="feedbackEmoji"></div>
+    <div class="feedback-text" id="feedbackText"></div>
+  </div>
+
+  <!-- Script externo -->
+  <script src="../js/modulo1.js"></script>
+
 </body>
 </html>

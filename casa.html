@@ -1,33 +1,200 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Inicio - Niveles</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Súper Moneda</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
-<div class="perfil">
-    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Perfil">
-    <div class="info">
-        <h3 id="nombreUsuario">Alumno</h3>
-        <p> Puntos <span id="dinero">100</span></p>
+<div id="app">
+
+  <!-- Nubes -->
+  <div class="cloud cloud-1"></div>
+  <div class="cloud cloud-2"></div>
+  <div class="cloud cloud-3"></div>
+
+  <!-- Árboles -->
+  <div class="tree tree-1"><div class="tree-top"></div><div class="tree-top-2"></div><div class="tree-trunk"></div></div>
+  <div class="tree tree-2"><div class="tree-top"></div><div class="tree-trunk"></div></div>
+  <div class="tree tree-3"><div class="tree-top"></div><div class="tree-top-2"></div><div class="tree-trunk"></div></div>
+  <div class="tree tree-4"><div class="tree-top"></div><div class="tree-trunk"></div></div>
+
+  <!-- ── HEADER ── -->
+  <div id="header">
+    <button id="player-btn" onclick="openModal('player-modal')">
+      <div id="player-avatar"><i class="fa-solid fa-user-astronaut" style="color: rgb(255, 255, 255);"></i></div>
+      <span id="player-name">Player</span>
+    </button>
+    <button id="score-btn" onclick="openModal('score-modal')">Puntaje</button>
+    <div id="header-icons">
+      
+      <button class="icon-btn" id="mute-btn" onclick="toggleMute()"><i class="fa-solid fa-volume-xmark" style="color: rgb(255, 255, 255);"></i></button>
+      <button class="icon-btn" onclick="openModal('settings-modal')"><i class="fa-solid fa-gear" style="color: rgb(255, 255, 255);"></i></button>
     </div>
+  </div>
+
+  <!-- ── CONTENIDO ── -->
+  <div id="content">
+    <div id="section-title">Selecciona un Modulo</div>
+
+    <div id="carousel-wrapper">
+      <button class="nav-arrow" id="arrow-left"  onclick="moveCarousel(-1)">&#8592;</button>
+      <button class="nav-arrow" id="arrow-right" onclick="moveCarousel(1)">&#8594;</button>
+
+      <div id="carousel">
+
+        <!-- MÓDULO 1 -->
+        <div class="module-item">
+          <div class="module-card card-1" onclick="openModule(1)">
+             <img src="img/sp1.jpeg" alt="Módulo 1"> 
+            <div class="card-placeholder">
+              <span style="font-size:1rem;color:white;font-weight:700;">Módulo de Reconocimiento de Billetes y Monedas</span>
+            </div>
+          </div>
+          <div class="module-label">Modulo 1</div>
+        </div>
+
+        <!-- MÓDULO 2 -->
+        <div class="module-item">
+          <div class="module-card card-2" onclick="openModule(2)">
+            <img src="img/sp2.jpeg" alt="Módulo 2"> 
+            <div class="card-placeholder">
+              <span style="font-size:1rem;color:white;font-weight:700;">Módulo de Comparación de Valores</span>
+            </div>
+          </div>
+          <div class="module-label">Modulo 2</div>
+        </div>
+
+        <!-- MÓDULO 3 -->
+        <div class="module-item">
+          <div class="module-card card-3" onclick="openModule(3)">
+           <img src="img/sp3.jpeg" alt="Módulo 3">
+            <div class="card-placeholder">
+              
+              <span style="font-size:1rem;color:white;font-weight:700;">Módulo de Conteo Básico</span>
+            </div>
+          </div>
+          <div class="module-label">Modulo 3</div>
+        </div>
+
+        <!-- MÓDULO 4 — bloqueado -->
+        <div class="module-item">
+          <div class="module-card card-4 card-locked" onclick="showToast('¡Completa el Módulo 3 primero!')">
+             <img src="img/sp4.jpeg" alt="Módulo 4"> 
+            <div class="card-placeholder">              
+              <span style="font-size:1rem;color:white;font-weight:700;">Módulo de Simulación de Compra</span>
+            </div>
+          </div>
+          <div class="module-label">Modulo 4</div>
+        </div>
+
+        <!-- MÓDULO 5 — bloqueado -->
+        <div class="module-item">
+          <div class="module-card card-5 card-locked" onclick="showToast('¡Completa el Módulo 4 primero!')">
+             <img src="img/sp5.jpeg" alt="Módulo 5"> 
+            <div class="card-placeholder">
+              <span style="font-size:1rem;color:white;font-weight:700;">Módulo de Clasificación por Denominación</span>
+            </div>
+          </div>
+          <div class="module-label">Modulo 5</div>
+        </div>
+
+      </div><!-- /carousel -->
+    </div><!-- /carousel-wrapper -->
+
+    <!-- Indicadores (dots) -->
+    <div id="dots"></div>
+  </div><!-- /content -->
+
+</div><!-- /app -->
+
+
+<!-- ══ MODAL: Player ══ -->
+<div class="modal-overlay" id="player-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('player-modal')">✕</button>
+    <h2><i class="fa-solid fa-user-astronaut" style="color: rgb(7, 7, 7);"></i> Tu Perfil</h2>
+    <p>Nombre del jugador:</p>
+    <input id="name-input" class="name-input" type="text" placeholder="Escribe tu nombre...">
+    <button class="btn-primary" onclick="saveName()">Guardar nombre</button>
+  </div>
 </div>
 
-<h1 class="titulo">Selecciona un Nivel</h1>
-
-<div class="modulos-container">
-
-    <a href="modulos/modulo1.html" class="modulo m1">Módulo 1</a>
-    <a href="#" class="modulo m2">Módulo 2</a>
-    <a href="#" class="modulo m3">Módulo 3</a>
-
-    <a href="#" class="modulo m4">Módulo 4</a>
-    <a href="#" class="modulo m5">Módulo 5</a>
-
+<!-- ══ MODAL: Puntaje ══ -->
+<div class="modal-overlay" id="score-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('score-modal')">✕</button>
+    <h2><i class="fa-solid fa-star" style="color: rgb(255, 212, 59);"></i> Puntaje</h2>
+    <div class="score-grid">
+      <div class="score-item">
+        <div class="num" id="total-score">0</div>
+        <div class="lbl">Puntos totales</div>
+      </div>
+      <div class="score-item">
+        <div class="num" id="modules-done">0</div>
+        <div class="lbl">Módulos completados</div>
+      </div>
+      <div class="score-item">
+        <div class="num" id="streak">0</div>
+        <div class="lbl">Racha de días</div>
+      </div>
+      <div class="score-item">
+        <div class="num" id="stars"><i class="fa-solid fa-star" style="color: rgb(255, 212, 59);"></i>0</div>
+        <div class="lbl">Estrellas</div>
+      </div>
+    </div>
+    <button class="btn-primary" onclick="closeModal('score-modal')">Cerrar</button>
+  </div>
 </div>
 
-<script src="js/casa.js"></script>
+<!-- ══ MODAL: Ajustes ══ -->
+<div class="modal-overlay" id="settings-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('settings-modal')">✕</button>
+    <h2>Ajustes</h2>
+    <div class="setting-row">
+      <span><i class="fa-solid fa-volume-high"></i> Sonido</span>
+      <div class="toggle on" id="toggle-sound" onclick="toggleSetting('toggle-sound')"></div>
+    </div>
+    <div class="setting-row">
+      <span><i class="fa-solid fa-music"></i> Música</span>
+      <div class="toggle on" id="toggle-music" onclick="toggleSetting('toggle-music')"></div>
+    </div>
+
+    <br>
+    <button class="btn-primary" onclick="closeModal('settings-modal')">Listo</button>
+  </div>
+</div>
+
+<!-- ══ MODAL: Módulo ══ -->
+<div class="modal-overlay" id="module-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('module-modal')">✕</button>
+    <h2 id="mod-title">Módulo</h2>
+    <p id="mod-desc">Descripción del módulo.</p>
+
+    <!-- Barra de progreso -->
+    <div class="progress-wrapper">
+      <div class="progress-header">
+        <span class="progress-label">Progreso</span>
+        <span class="progress-pct" id="mod-progress-pct">0%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-bar" id="mod-progress-bar"></div>
+      </div>
+    </div>
+
+    <button class="btn-primary" onclick="startModule()">¡Empezar!</button>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast"></div>
+
+<script src="js/app.js"></script>
 </body>
 </html>

@@ -1,0 +1,170 @@
+/* ══════════════════════════════════════
+   FELICIDADES — Estilos
+   ══════════════════════════════════════ */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Baloo 2', cursive;
+  height: 100vh;
+  overflow: hidden;
+  background: #29C9F0;
+}
+
+/* ── FONDO ── */
+#bg {
+  position: fixed;
+  inset: 0;
+  background: #29C9F0;
+  z-index: 0;
+}
+
+.rays {
+  position: absolute;
+  inset: 0;
+  background: repeating-conic-gradient(
+    from 0deg at 50% 50%,
+    #3DD6F5 0deg 10deg,
+    #29C9F0 10deg 20deg
+  );
+  animation: spinRays 20s linear infinite;
+  opacity: 0.5;
+}
+@keyframes spinRays { to { transform: rotate(360deg); } }
+
+/* ── NUBES ── */
+.cloud {
+  position: absolute;
+  background: white;
+  border-radius: 50px;
+  opacity: 0.9;
+}
+.cloud::before, .cloud::after {
+  content: ''; position: absolute;
+  background: white; border-radius: 50%;
+}
+.cl1 { width:180px; height:60px; bottom:12%; left:-20px; }
+.cl1::before { width:90px; height:90px; top:-40px; left:20px; }
+.cl1::after  { width:70px; height:70px; top:-30px; left:80px; }
+.cl2 { width:150px; height:50px; bottom:8%; right:-10px; }
+.cl2::before { width:75px; height:75px; top:-35px; left:15px; }
+.cl2::after  { width:60px; height:60px; top:-25px; left:70px; }
+.cl3 { width:120px; height:40px; top:30%; right:5%; opacity:0.6; }
+.cl3::before { width:60px; height:60px; top:-28px; left:12px; }
+
+/* ── HEADER ── */
+#header {
+  position: fixed;
+  top: 0; right: 0;
+  padding: 16px 24px;
+  display: flex;
+  gap: 16px;
+  z-index: 20;
+}
+.icon-btn {
+  background: none; border: none;
+  font-size: 1.5rem; cursor: pointer;
+  color: white;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  transition: transform .15s;
+}
+.icon-btn:hover { transform: scale(1.15); }
+
+/* ── ESTRELLAS KAWAII ── */
+.star {
+  position: absolute;
+  z-index: 5;
+  animation: floatStar 3s ease-in-out infinite;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2));
+}
+.star-left  { left: 2%;  top: 8%;  width: 160px; animation-delay: 0s; }
+.star-right { right: 3%; top: 40%; width: 140px; animation-delay: 1s; }
+
+@keyframes floatStar {
+  0%,100% { transform: translateY(0) rotate(-5deg); }
+  50%      { transform: translateY(-18px) rotate(5deg); }
+}
+
+/* ── CONTENIDO ── */
+#center {
+  position: relative;
+  z-index: 10;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 0 24px;
+}
+
+/* ── TARJETAS ── */
+.card {
+  background: white;
+  border-radius: 28px;
+  padding: 28px 40px;
+  text-align: center;
+  width: 100%;
+  max-width: 620px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  animation: popIn .5s cubic-bezier(.34,1.56,.64,1) both;
+}
+.card:nth-child(2) { animation-delay: .15s; }
+
+@keyframes popIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+.card h1 {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 800;
+  color: #2196F3;
+  line-height: 1.2;
+}
+
+.card-info {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+#puntos { color: #F97316; }
+
+/* ── BOTÓN PLAY ── */
+#next-btn {
+  width: 70px; height: 70px;
+  background: rgba(150,200,240,0.5);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem;
+  color: white;
+  margin: 0 auto;
+  transition: transform .2s, background .2s;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  animation: pulse 2s ease-in-out infinite;
+}
+#next-btn:hover {
+  transform: scale(1.1);
+  background: rgba(100,180,230,0.7);
+}
+@keyframes pulse {
+  0%,100% { box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
+  50%      { box-shadow: 0 4px 28px rgba(33,150,243,0.5); }
+}
+
+/* ── CONFETTI ── */
+.confetti {
+  position: fixed;
+  border-radius: 2px;
+  animation: fall linear forwards;
+  z-index: 1;
+}
+@keyframes fall {
+  0%   { transform: translateY(-20px) rotate(0deg);   opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
